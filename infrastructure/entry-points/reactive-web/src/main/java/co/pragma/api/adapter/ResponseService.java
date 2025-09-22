@@ -1,4 +1,4 @@
-package co.pragma.api.adapters;
+package co.pragma.api.adapter;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

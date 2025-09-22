@@ -1,9 +1,9 @@
 package co.pragma.api.config;
 
-import co.pragma.api.adapters.ResponseService;
 import co.pragma.api.handler.ReportePrestamosHandler;
 import co.pragma.api.RouterRest;
-import co.pragma.model.reporteprestamos.gateways.ReportePrestamosRepository;
+import co.pragma.api.security.SecurityHandlerFilter;
+import co.pragma.api.security.UserContextExtractor;
 import co.pragma.usecase.reportarprestamo.ConsultarReporteUseCase;
 import co.pragma.usecase.reportarprestamo.ReportarPrestamoUseCase;
 import org.junit.jupiter.api.Test;
@@ -13,14 +13,18 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import security.PermissionValidator;
 
 @ContextConfiguration(classes = {RouterRest.class, ReportePrestamosHandler.class})
 @WebFluxTest
-@Import({CorsConfig.class, SecurityHeadersConfig.class})
+@Import({SecurityConfig.class, CorsConfig.class, SecurityHeadersConfig.class, SecurityHandlerFilter.class})
 class ConfigTest {
 
     @Autowired
     private WebTestClient webTestClient;
+
+    @MockitoBean
+    private ReportePrestamosHandler reportePrestamosHandler;
 
     @MockitoBean
     private ConsultarReporteUseCase consultarReporteUseCase;
@@ -29,10 +33,10 @@ class ConfigTest {
     private ReportarPrestamoUseCase reportarPrestamoUseCase;
 
     @MockitoBean
-    private ReportePrestamosRepository reportePrestamosRepository;
+    private PermissionValidator permissionValidator;
 
     @MockitoBean
-    private ResponseService responseService;
+    private UserContextExtractor userContextExtractor;
 
     @Test
     void corsConfigurationShouldAllowOrigins() {

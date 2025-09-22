@@ -1,6 +1,6 @@
 package co.pragma.api.handler;
 
-import co.pragma.api.adapters.ResponseService;
+import co.pragma.api.adapter.ResponseService;
 import co.pragma.usecase.reportarprestamo.ConsultarReporteUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
