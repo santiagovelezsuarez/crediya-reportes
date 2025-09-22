@@ -1,0 +1,9 @@
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+aws:
+  region: ${DB_REGION}
+  dynamodb:
+    endpoint: ${DB_HOST:http://localhost:8000}

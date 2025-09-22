@@ -6,6 +6,7 @@ buildscript {
 		jacocoVersion = '0.8.13'
 		pitestVersion = '1.19.0-rc.1'
         lombokVersion = '1.18.38'
+        springDocVersion = '2.8.11'
 	}
 }
 
@@ -24,7 +25,7 @@ sonar {
         property "sonar.modules", "${modules.join(',')}"
         property "sonar.sources", "src,deployment,settings.gradle,main.gradle,build.gradle,${modules.collect { "${it}/build.gradle" }.join(',')}"
         property "sonar.exclusions",
-                "**/MainApplication.java," +
+                        "**/MainApplication.java," +
                         "**/*Application.java," +
                         "**/*Config.java," +
                         "**/config/**," +
@@ -36,7 +37,7 @@ sonar {
                         "**/helper/**," +
                         "**/gateways/**," +
                         "**/*Enum.java," +
-                        "*Request.java," +
+                        "**/*Request.java," +
                         "**/*Response.java"
         property "sonar.tests", "src/test"
         property "sonar.java.binaries", "**/build/classes/java/main"

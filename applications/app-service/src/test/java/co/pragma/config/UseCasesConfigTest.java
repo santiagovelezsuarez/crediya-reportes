@@ -1,13 +1,18 @@
 package co.pragma.config;
 
+import co.pragma.model.reporteprestamos.gateways.ReportePrestamosRepository;
+import co.pragma.usecase.reportarprestamo.ConsultarReporteUseCase;
+import co.pragma.usecase.reportarprestamo.ReportarPrestamoUseCase;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UseCasesConfigTest {
+class UseCasesConfigTest {
 
     @Test
     void testUseCaseBeansExist() {
@@ -31,14 +36,18 @@ public class UseCasesConfigTest {
     static class TestConfig {
 
         @Bean
-        public MyUseCase myUseCase() {
-            return new MyUseCase();
+        public ReportePrestamosRepository reportePrestamosRepository() {
+            return Mockito.mock(ReportePrestamosRepository.class);
         }
-    }
 
-    static class MyUseCase {
-        public String execute() {
-            return "MyUseCase Test";
+        @Bean
+        public ConsultarReporteUseCase consultarReporteUseCase() {
+            return Mockito.mock(ConsultarReporteUseCase.class);
+        }
+
+        @Bean
+        public ReportarPrestamoUseCase reportarPrestamoUseCase() {
+            return Mockito.mock(ReportarPrestamoUseCase.class);
         }
     }
 }
