@@ -6,4 +6,4 @@ spring:
 aws:
   region: ${DB_REGION}
   dynamodb:
-    endpoint: ${DB_HOST:http://localhost:8000}
+    endpoint: ${DYNAMODB_ENDPOINT:http://localhost:8000}

@@ -1,6 +1,6 @@
 package co.pragma.api.handler;
 
-import co.pragma.api.adapters.ResponseService;
+import co.pragma.api.adapter.ResponseService;
 import co.pragma.model.reporteprestamos.ReportePrestamos;
 import co.pragma.usecase.reportarprestamo.ConsultarReporteUseCase;
 import org.junit.jupiter.api.Test;
