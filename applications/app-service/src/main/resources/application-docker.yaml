@@ -7,3 +7,12 @@ aws:
   region: ${DB_REGION}
   dynamodb:
     endpoint: ${DYNAMODB_ENDPOINT:http://localhost:8000}
+
+entrypoint:
+  sqs:
+    region: "${QUEUE_REGION:us-east-2}"
+    queueUrl: "${QUEUE_REPORTES:}"
+    waitTimeSeconds: 20
+    maxNumberOfMessages: 10
+    visibilityTimeoutSeconds: 10
+    numberOfThreads: 1
